@@ -1,5 +1,6 @@
 import express from "express";
 import products from "./data/products.js";
+
 //call dotenv.config() before using any environment variable
 import dotenv from "dotenv";
 dotenv.config();

@@ -26,7 +26,7 @@ const products = [
   {
     _id: "3",
     name: "Dell",
-    image: "/images/dell inspiron.jpg",
+    image: "/images/monitech.jpg",
     description: " on sale",
     brand: "apple",
     category: "Electronics",
