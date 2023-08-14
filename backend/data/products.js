@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: "1",
     name: "Samsung phone   ",
     image: "/images/samsung-ultra.jpg",
     description: "on sale ",
@@ -12,7 +11,6 @@ const products = [
     numReviews: 13,
   },
   {
-    _id: "2",
     name: "laptop",
     image: "/images/macbook.jpg",
     description: "on sale ",
@@ -24,7 +22,6 @@ const products = [
     numReviews: 13,
   },
   {
-    _id: "3",
     name: "Dell",
     image: "/images/monitech.jpg",
     description: " on sale",
@@ -36,7 +33,6 @@ const products = [
     numReviews: 13,
   },
   {
-    _id: "4",
     name: "Camera",
     image: "/images/cameracanon.jpg",
     description: " on sale",
@@ -48,7 +44,6 @@ const products = [
     numReviews: 13,
   },
   {
-    _id: "5",
     name: "Iphone",
     image: "/images/iphone14.jpg",
     description: "on sale this is best product on market",

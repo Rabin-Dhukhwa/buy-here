@@ -1,9 +1,13 @@
 import express from "express";
-import products from "./data/products.js";
-
 //call dotenv.config() before using any environment variable
 import dotenv from "dotenv";
 dotenv.config();
+
+import connectDB from "./config/db.js";
+connectDB(); //connect to mongoDB
+
+import productRoutes from "./routes/productRoutes.js";
+import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 // to specify the port on which the server will run.
 const port = process.env.PORT || 5000;
@@ -11,14 +15,14 @@ const port = process.env.PORT || 5000;
 //to define our API routes and configure the server.
 const app = express();
 
-app.get("/api/products", (req, res) => {
-  //   res.send("API is running.");
-  res.json(products);
+app.get("/", (req, res) => {
+  res.send("API is running...");
 });
 
-app.get("/api/products/:id", (req, res) => {
-  const product = products.find((p) => p._id === req.params.id);
-  res.json(product);
-});
+//when call/hit '/api/products' , it will redirect to productRoutes file
+app.use("/api/products", productRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`server running on port ${port}`));
