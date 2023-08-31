@@ -6,7 +6,7 @@ const products = [
     brand: "samsung",
     category: "Electronics",
     price: 200,
-    countInStock: 10,
+    countInStock: 3,
     rating: 1.5,
     numReviews: 13,
   },
