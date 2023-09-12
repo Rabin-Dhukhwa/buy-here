@@ -3,11 +3,13 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 
+import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 connectDB(); //connect to mongoDB
 
-import productRoutes from "./routes/productRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
+import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 // to specify the port on which the server will run.
 const port = process.env.PORT || 5000;
@@ -15,12 +17,21 @@ const port = process.env.PORT || 5000;
 //to define our API routes and configure the server.
 const app = express();
 
+//Body parser middleware, allow to get body data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//Cookie parser middleware
+app.use(cookieParser());
+
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
 //when call/hit '/api/products' , it will redirect to productRoutes file
 app.use("/api/products", productRoutes);
+
+app.use("/api/users", userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
