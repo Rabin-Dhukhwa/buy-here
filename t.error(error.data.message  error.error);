@@ -1,0 +1,8 @@
+[33m7479efd[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m frontend login authentication
+[33me861067[m  backend authentication
+[33mb17def9[m shopping cart functionality added
+[33mb08b616[m fetched products from mongodb & mongoose, in  productRoutes
+[33mcc2d627[m mongodb atlas start
+[33ma65efdd[m backend server started, and setup package.json which concurrently run backend and fronend
+[33m794eb43[m front-end layout
+[33mfddd6c0[m starting commit
