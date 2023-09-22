@@ -7,7 +7,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       //define a login action that sends a POST request to the authentication endpoint
       //send request to the backend and set cookies
       query: (data) => ({
-        url: `${USERS_URL}/auth`,
+        url: `${USERS_URL}/auth`, // API endpoint URL
+        method: "POST",
+        body: data,
+      }),
+    }),
+    register: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}`,
         method: "POST",
         body: data,
       }),
@@ -21,4 +28,5 @@ export const usersApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation } = usersApiSlice;
+export const { useLoginMutation, useLogoutMutation, useRegisterMutation } =
+  usersApiSlice;
