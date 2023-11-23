@@ -28,9 +28,9 @@ const OrderScreen = () => {
   const [deliverOrder, { isLoading: loadingDeliver }] =
     useDeliverOrderMutation();
 
-  const { userInfo } = useSelector((state) => state.auth);
-
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
+
+  const { userInfo } = useSelector((state) => state.auth);
 
   const {
     data: paypal,
@@ -45,7 +45,7 @@ const OrderScreen = () => {
           type: "resetOptions",
           value: {
             "client-id": paypal.clientId,
-            currency: "USD",
+            currency: "AUD",
           },
         });
         paypalDispatch({ type: "setLoadingStatus", value: "pending" });
@@ -63,9 +63,9 @@ const OrderScreen = () => {
       try {
         await payOrder({ orderId, details });
         refetch();
-        toast.success("Order is paid");
+        toast.success("Payment successful");
       } catch (err) {
-        toast.error(err?.data?.message || err.error);
+        toast.error(err?.data?.message || err.message);
       }
     });
   }
@@ -75,7 +75,7 @@ const OrderScreen = () => {
   //   await payOrder({ orderId, details: { payer: {} } });
   //   refetch();
 
-  //   toast.success('Order is paid');
+  //   toast.success("Payment successful");
   // }
 
   function onError(err) {
@@ -91,8 +91,8 @@ const OrderScreen = () => {
           },
         ],
       })
-      .then((orderID) => {
-        return orderID;
+      .then((orderId) => {
+        return orderId;
       });
   }
 
@@ -221,7 +221,7 @@ const OrderScreen = () => {
                     <div>
                       {/* THIS BUTTON IS FOR TESTING! REMOVE BEFORE PRODUCTION! */}
                       {/* <Button
-                        style={{ marginBottom: '10px' }}
+                        style={{ marginBottom: "10px" }}
                         onClick={onApproveTest}
                       >
                         Test Pay Order
