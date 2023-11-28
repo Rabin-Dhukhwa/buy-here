@@ -8,6 +8,7 @@ import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+// import { clearCartItems } from "../slices/cartSlice";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -22,6 +23,8 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
+      // dispatch(clearCartItems());
+
       navigate("/login");
     } catch (error) {
       toast.error(error?.data?.message || error.error);
@@ -33,7 +36,7 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand href="/">BuyAnything</Navbar.Brand>
+            <Navbar.Brand href="/">BuyHere</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

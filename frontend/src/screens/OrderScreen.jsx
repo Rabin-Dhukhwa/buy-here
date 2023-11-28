@@ -96,9 +96,14 @@ const OrderScreen = () => {
       });
   }
 
-  const deliverHandler = async () => {
-    await deliverOrder(orderId);
-    refetch();
+  const deliverOrderHandler = async () => {
+    try {
+      await deliverOrder(orderId);
+      refetch();
+      toast.success("Order delivered");
+    } catch (error) {
+      toast.error(error?.data?.message || error.message);
+    }
   };
 
   return isLoading ? (
@@ -249,7 +254,7 @@ const OrderScreen = () => {
                     <Button
                       type="button"
                       className="btn btn-block"
-                      onClick={deliverHandler}
+                      onClick={deliverOrderHandler}
                     >
                       Mark As Delivered
                     </Button>
