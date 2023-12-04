@@ -37,27 +37,6 @@ const ProductEditScreen = () => {
 
   const navigate = useNavigate();
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    try {
-      await updateProduct({
-        productId,
-        name,
-        price,
-        image,
-        brand,
-        category,
-        description,
-        countInStock,
-      });
-      toast.success("Product updated");
-      refetch();
-      navigate("/admin/productlist");
-    } catch (err) {
-      toast.error(err?.data?.message || err.error);
-    }
-  };
-
   useEffect(() => {
     if (product) {
       setName(product.name);
@@ -69,6 +48,29 @@ const ProductEditScreen = () => {
       setDescription(product.description);
     }
   }, [product]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const updatedProduct = {
+      productId,
+      name,
+      price,
+      image,
+      brand,
+      category,
+      description,
+      countInStock,
+    };
+
+    const result = await updateProduct(updatedProduct);
+    if (result.error) {
+      toast.error(result.error);
+    } else {
+      toast.success("Product updated");
+      navigate("/admin/productlist");
+    }
+  };
 
   // const uploadFileHandler = async (e) => {
   //   const formData = new FormData();
@@ -93,10 +95,10 @@ const ProductEditScreen = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant="danger">{error.data.message}</Message>
+          <Message variant="danger">{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId="name">
+            <Form.Group controlId="name" className="my-2">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="name"
@@ -106,7 +108,7 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="price">
+            <Form.Group controlId="price" className="my-2">
               <Form.Label>Price</Form.Label>
               <Form.Control
                 type="number"
@@ -116,7 +118,7 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="image">
+            <Form.Group controlId="image" className="my-2">
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type="text"
@@ -132,7 +134,7 @@ const ProductEditScreen = () => {
               {/* {loadingUpload && <Loader />} */}
             </Form.Group>
 
-            <Form.Group controlId="brand">
+            <Form.Group controlId="brand" className="my-2">
               <Form.Label>Brand</Form.Label>
               <Form.Control
                 type="text"
@@ -142,7 +144,7 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="countInStock">
+            <Form.Group controlId="countInStock" className="my-2">
               <Form.Label>Count In Stock</Form.Label>
               <Form.Control
                 type="number"
@@ -152,7 +154,7 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="category">
+            <Form.Group controlId="category" className="my-2">
               <Form.Label>Category</Form.Label>
               <Form.Control
                 type="text"
@@ -162,7 +164,7 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="description">
+            <Form.Group controlId="description" className="my-2">
               <Form.Label>Description</Form.Label>
               <Form.Control
                 type="text"
@@ -176,6 +178,7 @@ const ProductEditScreen = () => {
               type="submit"
               variant="primary"
               style={{ marginTop: "1rem" }}
+              className="my-2"
             >
               Update
             </Button>
