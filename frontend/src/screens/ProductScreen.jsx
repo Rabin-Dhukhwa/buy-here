@@ -70,7 +70,7 @@ const ProductScreen = () => {
   return (
     <>
       <Link to="/" className="btn btn-dark my-3">
-        &lt; Back
+        Go Back
       </Link>
       {isLoading ? (
         <Loader />
