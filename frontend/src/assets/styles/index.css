@@ -43,11 +43,24 @@ table th {
   margin-top: 10px;
 }
 
+.carousel-item {
+  height: 30vh;
+}
+
 .carousel-caption {
   position: absolute;
   width: 100%;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  /* background: rgba(204, 203, 203, 0.5); */
+}
+
+.carousel-caption > h2 {
+  color: white;
+  font-size: medium;
+}
+
+.carousel-inner {
+  background: white;
 }
