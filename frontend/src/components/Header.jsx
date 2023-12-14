@@ -34,7 +34,13 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
+      <Navbar
+        // bg="dark"
+        variant="dark"
+        expand="md"
+        collapseOnSelect
+        style={{ background: "#074B53" }}
+      >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand href="/">BuyHere</Navbar.Brand>
