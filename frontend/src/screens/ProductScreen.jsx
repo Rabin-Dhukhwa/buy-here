@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import { addToCart } from "../slices/cartSlice";
+import Meta from "../components/Helmet/Meta";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -80,6 +81,7 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             {/* total Col size is 12 */}
             <Col md={5}>

@@ -64,3 +64,25 @@ table th {
 .carousel-inner {
   background: white;
 }
+
+/* marquee animation */
+.continuous-text-container {
+  overflow: hidden;
+  position: relative;
+  height: 40px; /* Set an appropriate height for the marquee */
+}
+
+.continuous-text {
+  white-space: nowrap;
+  position: absolute;
+  animation: marquee 15s linear infinite; /* Adjust the duration as needed */
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

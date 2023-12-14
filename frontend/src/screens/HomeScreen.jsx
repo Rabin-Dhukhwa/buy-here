@@ -7,6 +7,8 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import Paginate from "../components/Paginate";
 import ProductCarousel from "../components/ProductCarousel";
+import Meta from "../components/Helmet/Meta";
+import ContinuousTextAnimation from "../components/Marquee/ContinuousTextAnimation";
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
@@ -17,6 +19,7 @@ const HomeScreen = () => {
 
   return (
     <>
+      <ContinuousTextAnimation />
       {!keyword ? (
         <ProductCarousel />
       ) : (
@@ -32,7 +35,8 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
-          <h1>Recently sold </h1>
+          <Meta />
+          <h1>Hot Deals </h1>
           <Row>
             {data.products.map((product, i) => (
               <Col
